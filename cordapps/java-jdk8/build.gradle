@@ -1,0 +1,13 @@
+buildscript {
+    ext.corda_platform_version = 10
+}
+
+allprojects {
+    apply plugin: 'java'
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(8)
+        }
+    }
+}

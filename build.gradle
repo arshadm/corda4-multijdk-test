@@ -1,0 +1,37 @@
+buildscript {//properties that you need to build the project
+    Properties constants = new Properties()
+    file("$projectDir/./constants.properties").withInputStream { constants.load(it) }
+
+    ext {
+        corda_release_version = constants.getProperty("cordaVersion")
+        corda_gradle_plugins_version = constants.getProperty("gradlePluginsVersion")
+
+        quasar_version = constants.getProperty("quasarVersion")
+        quasar_jdk11_version = constants.getProperty("quasarJdk11Version")
+
+        junit_version = constants.getProperty("junitVersion")
+        log4j_version = constants.getProperty("log4jVersion")
+        slf4j_version = constants.getProperty("slf4jVersion")
+    }
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url 'https://software.r3.com/artifactory/corda-releases' }
+    }
+
+    dependencies {
+        classpath "net.corda.plugins:cordapp:$corda_gradle_plugins_version"
+        classpath "net.corda.plugins:cordformation:$corda_gradle_plugins_version"
+        classpath "net.corda.plugins:quasar-utils:$corda_gradle_plugins_version"
+    }
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url 'https://software.r3.com/artifactory/corda' }
+        maven { url 'https://jitpack.io' }
+    }
+}

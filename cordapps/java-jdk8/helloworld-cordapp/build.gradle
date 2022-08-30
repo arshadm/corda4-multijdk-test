@@ -1,0 +1,3 @@
+allprojects {
+    println "Using Java ${org.gradle.internal.jvm.Jvm.current()}"
+}

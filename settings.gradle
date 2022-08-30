@@ -1,0 +1,7 @@
+
+rootProject.name = 'corda4-multijdk-test'
+
+include ":cordapps:java-jdk8"
+include ":cordapps:java-jdk8:helloworld-cordapp"
+include ":cordapps:java-jdk8:helloworld-cordapp:contracts"
+include ":cordapps:java-jdk8:helloworld-cordapp:workflows"
