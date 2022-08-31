@@ -4,6 +4,7 @@ buildscript {//properties that you need to build the project
 
     ext {
         corda_release_version = constants.getProperty("cordaVersion")
+        corda_platform_version = constants.getProperty("cordaPlatformVersion").toInteger()
         corda_gradle_plugins_version = constants.getProperty("gradlePluginsVersion")
 
         quasar_version = constants.getProperty("quasarVersion")

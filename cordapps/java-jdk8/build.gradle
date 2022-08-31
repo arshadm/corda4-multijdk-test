@@ -1,9 +1,9 @@
-buildscript {
-    ext.corda_platform_version = 10
-}
-
 allprojects {
     apply plugin: 'java'
+
+    tasks.named('jar', Jar) {
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    }
 
     java {
         toolchain {

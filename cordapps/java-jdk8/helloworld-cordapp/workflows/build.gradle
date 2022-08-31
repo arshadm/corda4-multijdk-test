@@ -1,14 +1,16 @@
-//cordapp {
-//    targetPlatformVersion corda_platform_version
-//    minimumPlatformVersion corda_platform_version
-//
-//    workflow {
-//        name "Hello World Flows"
-//        vendor "Corda Open Source"
-//        licence "Apache License, Version 2.0"
-//        versionId 1
-//    }
-//}
+apply plugin: 'net.corda.plugins.cordapp'
+
+cordapp {
+    targetPlatformVersion corda_platform_version
+    minimumPlatformVersion corda_platform_version
+
+    workflow {
+        name "Hello World Flows"
+        vendor "Corda Open Source"
+        licence "Apache License, Version 2.0"
+        versionId 1
+    }
+}
 
 dependencies {
     implementation "net.corda:corda-core:$corda_release_version"
