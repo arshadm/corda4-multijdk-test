@@ -1,0 +1,66 @@
+apply plugin: 'net.corda.plugins.cordapp'
+apply plugin: 'kotlin'
+
+//    tasks.named('jar', Jar) {
+//        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+//    }
+
+kotlin {
+    jvmToolchain {
+        languageVersion.set(JavaLanguageVersion.of(11))
+    }
+
+    compileKotlin {
+        kotlinOptions {
+            allWarningsAsErrors = true
+            apiVersion = 1.7
+            languageVersion = 1.7
+            jvmTarget = 1.8
+        }
+    }
+}
+
+configurations {
+    jdk8
+    jdk11
+}
+
+cordapp {
+    targetPlatformVersion corda_platform_version
+    minimumPlatformVersion corda_platform_version
+}
+
+dependencies {
+    testImplementation "junit:junit:$junit_version"
+    testImplementation("net.corda:corda-node-driver:$corda_release_version") {
+        exclude group: 'org.gradle', module: 'gradle-tooling-api'
+    }
+
+    cordapp project(":cordapps:java-jdk8:helloworld-cordapp:workflows")
+
+    // list all test dependencies so that gradle can resolve them and add them to the
+    // test classpath, the application will then select the appropriate set to be
+    // used by the nodes.
+    jdk8 "co.paralleluniverse:quasar-core:$quasar_version"
+    jdk8 "net.corda:corda:$corda_release_version"
+
+    jdk11 "co.paralleluniverse:quasar-core:$quasar_jdk11_version"
+    jdk11 "net.corda:corda-jdk11:$corda_release_version"
+}
+
+task copyJdk8Dependencies(type: Copy) {
+    from configurations.jdk8
+    into "${buildDir}/dependencies/jdk8"
+}
+
+task copyJdk11Dependencies(type: Copy) {
+    from configurations.jdk11
+    into "${buildDir}/dependencies/jdk11"
+}
+
+tasks.named('test') {
+    systemProperty 'dependencies_dir', "${buildDir}/dependencies"
+}
+
+test.dependsOn 'copyJdk8Dependencies'
+test.dependsOn 'copyJdk11Dependencies'

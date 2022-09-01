@@ -28,7 +28,16 @@ buildscript {//properties that you need to build the project
     }
 }
 
+plugins {
+    id "org.jetbrains.kotlin.jvm" version "1.7.10"
+    id 'java'
+}
+
 allprojects {
+//    test {
+//        systemProperty "quasar_version", "1234"
+//    }
+
     repositories {
         mavenLocal()
         mavenCentral()
