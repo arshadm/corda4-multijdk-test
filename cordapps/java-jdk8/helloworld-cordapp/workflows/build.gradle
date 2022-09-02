@@ -14,7 +14,6 @@ cordapp {
 
 dependencies {
     implementation "net.corda:corda-core:$corda_release_version"
-    runtimeOnly "net.corda:corda:$corda_release_version"
 
     implementation project(":cordapps:java-jdk8:helloworld-cordapp:contracts")
 }

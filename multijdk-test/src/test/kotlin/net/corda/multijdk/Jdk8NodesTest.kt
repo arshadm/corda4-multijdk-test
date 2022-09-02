@@ -1,6 +1,5 @@
 package net.corda.multijdk
 
-import net.corda.cordapp.java.jdk8.helloworld.flows.HelloWorldFlow.HelloWorldFlowInitiator
 import net.corda.core.messaging.startFlow
 import net.corda.core.utilities.getOrThrow
 import net.corda.core.utilities.seconds
@@ -33,9 +32,9 @@ class Jdk8NodesTest {
 
             val nodeAHandle = startNode(providedName = ALICE_NAME, rpcUsers = listOf(user), classPath = jdk8ClassPath).getOrThrow()
             val nodeBHandle = startNode(providedName = BOB_NAME, rpcUsers = listOf(user), classPath = jdk8ClassPath).getOrThrow()
-            nodeAHandle.rpc.let {
-                val ref = it.startFlow(::HelloWorldFlowInitiator, nodeBHandle.nodeInfo.singleIdentity()).returnValue.getOrThrow(20.seconds)
-            }
+//            nodeAHandle.rpc.let {
+//                val ref = it.startFlow(::HelloWorldFlowInitiator, nodeBHandle.nodeInfo.singleIdentity()).returnValue.getOrThrow(20.seconds)
+//            }
         }
     }
 

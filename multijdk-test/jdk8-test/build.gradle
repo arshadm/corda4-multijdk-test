@@ -18,7 +18,6 @@ kotlin {
 
 configurations {
     jdk8
-    jdk11
 }
 
 cordapp {
@@ -40,11 +39,6 @@ dependencies {
     jdk8 "co.paralleluniverse:quasar-core:$quasar_version"
     jdk8 "net.corda:corda:$corda_release_version"
     jdk8 "net.corda:corda-node:$corda_release_version"
-    jdk8 project(":cordapps:java-jdk8:helloworld-cordapp:workflows")
-
-    jdk11 "co.paralleluniverse:quasar-core:$quasar_jdk11_version"
-    jdk11 "net.corda:corda-jdk11:$corda_release_version"
-    jdk11 "net.corda:corda-node-jdk11:$corda_release_version"
 }
 
 task copyJdk8Dependencies(type: Copy) {
@@ -52,14 +46,8 @@ task copyJdk8Dependencies(type: Copy) {
     into "${buildDir}/dependencies/jdk8"
 }
 
-task copyJdk11Dependencies(type: Copy) {
-    from configurations.jdk11
-    into "${buildDir}/dependencies/jdk11"
-}
-
 tasks.named('test') {
     systemProperty 'dependencies_dir', "${buildDir}/dependencies"
 }
 
 test.dependsOn 'copyJdk8Dependencies'
-test.dependsOn 'copyJdk11Dependencies'
