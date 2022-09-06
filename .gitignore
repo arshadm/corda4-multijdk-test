@@ -5,3 +5,4 @@
 build
 .idea/
 /multijdk-test/logs/
+/multijdk-test/jdk8-test/logs/
