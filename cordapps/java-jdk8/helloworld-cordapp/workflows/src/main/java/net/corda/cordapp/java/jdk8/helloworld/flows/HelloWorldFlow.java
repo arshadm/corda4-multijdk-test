@@ -37,7 +37,7 @@ public class HelloWorldFlow {
 
             // Step 1. Get a reference to the notary service on our network and our key pair.
             /** Explicit selection of notary by CordaX500Name - argument can by coded in flows or parsed from config (Preferred)*/
-            final Party notary = getServiceHub().getNetworkMapCache().getNotary(CordaX500Name.parse("O=Notary,L=London,C=GB"));
+            final Party notary = getServiceHub().getNetworkMapCache().getNotary(CordaX500Name.parse("O=Notary Service,L=Zurich,C=CH"));
 
             //Compose the State that carries the Hello World message
             final HelloWorldState output = new HelloWorldState(msg,sender,receiver);

@@ -32,6 +32,7 @@ dependencies {
     }
     testImplementation project(":cordapps:java-jdk8:helloworld-cordapp:workflows")
 
+    testRuntimeOnly "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.2"
     testRuntimeOnly "org.jboss.byteman:byteman:4.0.11"
 
     // list all test dependencies so that gradle can resolve them and add them to the
@@ -40,6 +41,7 @@ dependencies {
     jdk8 "co.paralleluniverse:quasar-core:$quasar_version"
     jdk8 "net.corda:corda:$corda_release_version"
     jdk8 "net.corda:corda-node:$corda_release_version"
+    jdk8 "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.2"
 }
 
 task copyJdk8Dependencies(type: Copy) {

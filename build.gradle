@@ -34,9 +34,6 @@ plugins {
 }
 
 allprojects {
-//    test {
-//        systemProperty "quasar_version", "1234"
-//    }
 
     repositories {
         mavenLocal()

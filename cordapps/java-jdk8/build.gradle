@@ -9,6 +9,10 @@ allprojects {
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     }
 
+    compileJava {
+        options.compilerArgs << '-parameters'
+    }
+
     java {
         toolchain {
             languageVersion = JavaLanguageVersion.of(8)
