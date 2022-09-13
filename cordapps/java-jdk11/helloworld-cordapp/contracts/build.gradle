@@ -13,5 +13,5 @@ cordapp {
 }
 
 dependencies {
-    implementation "net.corda:corda-core:$corda_release_version"
+    implementation "net.corda:corda-core-jdk11:$corda_release_version"
 }

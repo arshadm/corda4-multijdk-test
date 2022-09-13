@@ -6,6 +6,7 @@ allprojects {
     apply plugin: 'java'
 
     tasks.named('jar', Jar) {
+        archiveAppendix = 'jdk11'
         duplicatesStrategy = DuplicatesStrategy.EXCLUDE
     }
 

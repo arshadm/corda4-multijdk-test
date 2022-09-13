@@ -1,6 +1,7 @@
 package net.corda.multijdk
 
-import net.corda.cordapp.java.jdk8.helloworld.flows.HelloWorldFlow.HelloWorldFlowInitiator
+import net.corda.cordapp.java.jdk8.helloworld.flows.HelloWorldFlow.HelloWorldFlowInitiator as Jdk8HelloWorldFlowInitiator
+import net.corda.cordapp.java.jdk11.helloworld.flows.HelloWorldFlow.HelloWorldFlowInitiator as Jdk11HelloWorldFlowInitiator
 import net.corda.core.messaging.startFlow
 import net.corda.core.utilities.getOrThrow
 import net.corda.core.utilities.seconds
@@ -44,7 +45,7 @@ class MultiJdkTest {
             val nodeAHandle = startNode(providedName = ALICE_NAME, defaultParameters = defaultNodeParameters).getOrThrow()
             val nodeBHandle = startNode(providedName = BOB_NAME, defaultParameters = defaultNodeParameters).getOrThrow()
             nodeAHandle.rpc.let {
-                val ref = it.startFlow(::HelloWorldFlowInitiator, nodeBHandle.nodeInfo.singleIdentity()).returnValue.getOrThrow(20.seconds)
+                val ref = it.startFlow(::Jdk8HelloWorldFlowInitiator, nodeBHandle.nodeInfo.singleIdentity()).returnValue.getOrThrow(20.seconds)
             }
         }
     }
@@ -73,7 +74,7 @@ class MultiJdkTest {
             val nodeAHandle = startNode(providedName = ALICE_NAME, defaultParameters = defaultNodeParameters).getOrThrow()
             val nodeBHandle = startNode(providedName = BOB_NAME, defaultParameters = defaultNodeParameters).getOrThrow()
             nodeAHandle.rpc.let {
-                val ref = it.startFlow(::HelloWorldFlowInitiator, nodeBHandle.nodeInfo.singleIdentity()).returnValue.getOrThrow(20.seconds)
+                val ref = it.startFlow(::Jdk11HelloWorldFlowInitiator, nodeBHandle.nodeInfo.singleIdentity()).returnValue.getOrThrow(20.seconds)
             }
         }
     }
