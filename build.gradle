@@ -13,6 +13,16 @@ buildscript {//properties that you need to build the project
         junit_version = constants.getProperty("junitVersion")
         log4j_version = constants.getProperty("log4jVersion")
         slf4j_version = constants.getProperty("slf4jVersion")
+
+        jdk8_home = System.getenv('JDK8_HOME')
+        if (jdk8_home == null) {
+            throw new GradleException("JDK8_HOME system property missing")
+        }
+
+        jdk11_home = System.getenv('JDK11_HOME')
+        if (jdk11_home == null) {
+            throw new GradleException("JDK11_HOME system property missing")
+        }
     }
 
     repositories {

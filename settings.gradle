@@ -5,4 +5,10 @@ include ":cordapps:java-jdk8"
 include ":cordapps:java-jdk8:helloworld-cordapp"
 include ":cordapps:java-jdk8:helloworld-cordapp:contracts"
 include ":cordapps:java-jdk8:helloworld-cordapp:workflows"
-include ":multijdk-test:jdk8-test"
+
+include ":cordapps:java-jdk11"
+include ":cordapps:java-jdk11:helloworld-cordapp"
+include ":cordapps:java-jdk11:helloworld-cordapp:contracts"
+include ":cordapps:java-jdk11:helloworld-cordapp:workflows"
+
+include ":multijdk-test"

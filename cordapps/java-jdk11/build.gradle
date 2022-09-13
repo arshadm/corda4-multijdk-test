@@ -1,0 +1,21 @@
+buildscript {
+    ext.kotlin_version = "1.2.30"
+}
+
+allprojects {
+    apply plugin: 'java'
+
+    tasks.named('jar', Jar) {
+        duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    }
+
+    compileJava {
+        options.compilerArgs << '-parameters'
+    }
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(11)
+        }
+    }
+}
