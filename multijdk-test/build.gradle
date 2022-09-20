@@ -31,6 +31,7 @@ dependencies {
     testImplementation("net.corda:corda-node-driver:$corda_release_version") {
         exclude group: 'org.gradle', module: 'gradle-tooling-api'
     }
+    testImplementation "net.corda:corda-finance-workflows-jdk11:$corda_release_version"
     testImplementation project(":cordapps:java-jdk8:helloworld-cordapp:workflows")
     testImplementation project(":cordapps:java-jdk11:helloworld-cordapp:workflows")
 
@@ -47,6 +48,8 @@ dependencies {
     jdk11 "co.paralleluniverse:quasar-core:$quasar_jdk11_version"
     jdk11 "net.corda:corda-jdk11:$corda_release_version"
     jdk11 "net.corda:corda-node-jdk11:$corda_release_version"
+    jdk11 "net.corda:corda-finance-contracts-jdk11:$corda_release_version"
+    jdk11 "net.corda:corda-finance-workflows-jdk11:$corda_release_version"
     jdk11 project(":cordapps:java-jdk11:helloworld-cordapp:workflows")
 }
 

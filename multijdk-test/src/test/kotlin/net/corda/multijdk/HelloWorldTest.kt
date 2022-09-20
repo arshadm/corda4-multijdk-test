@@ -19,7 +19,7 @@ import net.corda.testing.node.internal.findCordapp
 import org.junit.Test
 import java.io.File
 
-class HelloWorldTest {
+class HelloWorldTest : MultiJdkTest() {
 
     @Test(timeout = 300_000)
     fun `Two nodes both running JDK 8, with cordapps also targeting JDK 8`() {
@@ -145,10 +145,5 @@ class HelloWorldTest {
                     it.startFlow(::Jdk8HelloWorldFlowInitiator, nodeBHandle.nodeInfo.singleIdentity()).returnValue.getOrThrow(20.seconds)
             }
         }
-    }
-
-    private fun generateClassPath(jdkClassifier: String): List<String> {
-        val dependenciesDir = System.getProperty("dependencies_dir")
-        return File("${dependenciesDir}/${jdkClassifier}").listFiles().map { it.absolutePath }
     }
 }
